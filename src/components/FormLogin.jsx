@@ -6,11 +6,32 @@ export class FormLogin extends Component {
 
     constructor(){
         super();
-        this.state = {email:'', senha:''}
+        this.state = {email:'', senha:'', erroMsg : {main : '', email: [], senha: []}}
     }
 
-    sendLoginData = () =>{
-        doLogin(this.state);
+    sendLoginData = event =>{
+        event.preventDefault();
+        doLogin({email: this.state.email, senha:this.state.senha})
+        .then(res => res)
+        .catch(erroPromise => this.showErros(erroPromise));
+    }
+
+    showErros = erroPromise => {
+        erroPromise.then(serverErrorsMsgs => {
+            return this.handleErrorsMsg(serverErrorsMsgs);
+        }).then(handledErros => {
+            this.setState({erroMsg : handledErros})});
+    }
+
+    handleErrorsMsg = serverErrorsMsgs =>{
+        let errorsToUpdateState = {main : serverErrorsMsgs.message, email: [], senha: []}
+        serverErrorsMsgs.details.forEach(erroMsg =>{
+            if(erroMsg.includes(':')){
+                let erroArray = erroMsg.split(":");
+                errorsToUpdateState[erroArray[0]].push(erroArray[1]);
+            }
+        });
+        return errorsToUpdateState;
     }
 
     handleChange = event => {
@@ -19,17 +40,20 @@ export class FormLogin extends Component {
 
     render() {
         return (
-            <div>
+            <form onSubmit={this.sendLoginData}>
+                <span>{this.state.erroMsg.main}</span>
                 <label htmlFor="email">
                     email
-                    <input type="email" name="email" value={this.state.email} onChange={this.handleChange}/>
+                    <input type="email" name="email" required value={this.state.email} onChange={this.handleChange}/>
+                    <span>{this.state.erroMsg.email}</span>
                 </label>
                 <label htmlFor="senha">
                     senha
-                    <input type="password" name="senha" value={this.state.senha}  onChange={this.handleChange}/>
+                    <input type="password" name="senha" required value={this.state.senha}  onChange={this.handleChange}/>
+                    <span>{this.state.erroMsg.senha}</span>
                 </label>
-                <button onClick={this.sendLoginData}>enviar</button>
-            </div>
+                <input type="submit" value="login"/>
+            </form>
         );
     }
 }

@@ -5,20 +5,17 @@ const postMethod = 'post';
 export const doLogin = loginBody => {
   let header = new Headers();
   header.append("Content-Type","application/json");
-    fetch(`${baseURL}auth`,
+    return fetch(`${baseURL}auth`,
     {
       method:postMethod,
       headers: header,
       body: JSON.stringify(loginBody)
-    }).then(function(response) {
-      return response.json();
+    }).then(response => {
+      if(response.ok)
+        return response.json()
+      else
+       return Promise.reject(response.json());
     })
-    .then(function(json) {
-      console.log(json);
-    })
-    .catch(function(error) {
-      console.log(error)
-    });
   }
 
   
