@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
+import { testConectionWithAPI } from '../api/ApiFeedBack';
+
 
 export class FormLogin extends Component {
+
+    constructor(){
+        super();
+        this.state = {email: '', senha:''}
+    }
+
+    sendLoginData = () =>{
+        testConectionWithAPI();
+    }
+
     render() {
         return (
             <div>
-                <form action="/" method="post">
-                    <label htmlFor="email">
-                        email
-                        <input type="email" name="email" />
-                    </label>
-                    <label htmlFor="senha">
-                        senha
-                        <input type="password" name="senha" />
-                    </label>
-                </form>
+                <button onClick={this.sendLoginData}>enviar</button>
             </div>
         );
     }
