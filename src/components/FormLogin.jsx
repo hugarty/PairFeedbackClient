@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { doLogin } from '../api/ApiFeedBack';
-
+import { Redirect } from 'react-router-dom'
 
 export class FormLogin extends Component {
 
@@ -12,11 +12,14 @@ export class FormLogin extends Component {
     sendLoginData = event =>{
         event.preventDefault();
         doLogin({email: this.state.email, senha:this.state.senha})
-        .then(res => res)
-        .catch(erroPromise => this.showErros(erroPromise));
+        .then(res => {
+            sessionStorage.setItem('tokenFeedback',`${res.tipo} ${res.token}`)
+            this.props.history.push('/');
+        })
+        .catch(erroPromise => this.showErrors(erroPromise));
     }
 
-    showErros = erroPromise => {
+    showErrors = erroPromise => {
         erroPromise.then(serverErrorsMsgs => {
             return this.handleErrorsMsg(serverErrorsMsgs);
         }).then(handledErros => {
