@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { doLogin } from '../api/ApiFeedBack';
-import { Redirect } from 'react-router-dom'
 
 export class FormLogin extends Component {
 
