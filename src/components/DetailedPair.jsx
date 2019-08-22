@@ -11,8 +11,8 @@ const DetailedPair = ({pairDetails}) =>{
                 <p>media do par: {average}</p>
                 <div>
                     { feedBackDtoList.map(feedBackDto => {
-                        return <p key={feedBackDto.id}>{feedBackDto.date} {feedBackDto.average}</p>
-                    }) }
+                        return <p key={feedBackDto.id}>{feedBackDto.date} {feedBackDto.rating}</p>
+                    })}
                 </div>
             </div>
         );
