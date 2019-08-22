@@ -15,13 +15,6 @@ class App extends Component{
     }
   }
 
-  showDetailsOfPair = (event, pair) => {
-    getPair(pair.id)
-      .then(res => {
-          this.setState({detailedPair: res});
-      });
-  }
-
   componentDidMount(){
     getMe().then(res=>{
       this.setState({
@@ -45,6 +38,17 @@ class App extends Component{
     this.setState({pairs:pairs});
   }
 
+  showDetailsOfPair = (event, pair) => {
+    getPair(pair.id)
+      .then(res => {
+          this.setState({detailedPair: res});
+      });
+  }
+
+  addFeedbackToState = updatedPair =>{
+    this.setState({detailedPair: updatedPair});
+  }
+
   render() {
     return this.state.pairs.length > 0 ? (
       <Fragment>
@@ -59,7 +63,7 @@ class App extends Component{
           )}
         </div>
         <AddPair addPairToState={this.addPairToState}/>
-        <DetailedPair pairDetails={this.state.detailedPair}/>
+        <DetailedPair addFeedbackToState={this.addFeedbackToState}pairDetails={this.state.detailedPair}/>
       </Fragment>
     ) : <div><h1>Access Denied</h1>ESSE BLINK DE TELA VOCE TEM QUE RESOLVER COM O TOKEN SERVICE</div>;
   }

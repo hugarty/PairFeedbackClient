@@ -1,5 +1,5 @@
 const baseURL = "http://localhost:8080"
-const methods = {get:'GET', post:'POST', delete: 'DELETE'};
+const methods = {get:'GET', post:'POST', delete: 'DELETE', patch: 'PATCH'};
 
 export const doLogin = loginBody => {
     return fetch(`${baseURL}/auth`,
@@ -37,6 +37,18 @@ export const addPair = formBody => {
   return fetch(`${baseURL}/me/pair`,
     {
       method: methods.post,
+      headers: header,
+      body: JSON.stringify(formBody)
+    }).then(response => {
+        return handleJsonResponse(response);
+    })
+}
+
+export const addFeedbackInPair = formBody => {
+  let header = getBasicHeaderWithToken();
+  return fetch(`${baseURL}/me/pair`,
+    {
+      method: methods.patch,
       headers: header,
       body: JSON.stringify(formBody)
     }).then(response => {
@@ -90,7 +102,7 @@ const getBasicHeader = () =>{
 }
 
 const getBasicHeaderWithToken = () =>{
-  return  new Headers({'Accept':'application/json', 
+  return new Headers({'Accept':'application/json', 
     'Content-type':'application/json',
     'Origin':'*',
     "Authorization" : sessionStorage.getItem("tokenFeedback")});
