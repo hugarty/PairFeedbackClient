@@ -11,7 +11,7 @@ class AddPair extends Component {
   sendForm = event => {
     event.preventDefault();
     addPair(this.state).then( res =>{
-      this.props.addPair(res);
+      this.props.addPairToState(res);
     });
   }
 

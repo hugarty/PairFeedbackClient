@@ -1,5 +1,5 @@
 const baseURL = "http://localhost:8080"
-const methods = {get:'GET', post:'POST'};
+const methods = {get:'GET', post:'POST', delete: 'DELETE'};
 
 export const doLogin = loginBody => {
     return fetch(`${baseURL}/auth`,
@@ -8,10 +8,7 @@ export const doLogin = loginBody => {
       headers: getBasicHeader(),
       body: JSON.stringify(loginBody)
     }).then(response => {
-      if(response.ok)
-        return response.json()
-      else
-       return Promise.reject(response.json());
+      return handleJsonResponse(response);
     })
   }
 
@@ -21,10 +18,7 @@ export const getMe = () => {
     {
       headers: header
     }).then(response => {
-      if (response.ok)
-        return response.json()
-      else
-        return Promise.reject(response.json());
+      return handleJsonResponse(response);
     })
 }
 
@@ -34,10 +28,7 @@ export const getPair = pairId => {
     {
       headers: header
     }).then(response => {
-      if (response.ok)
-        return response.json()
-      else
-        return Promise.reject(response.json());
+      return handleJsonResponse(response);
     })
 }
 
@@ -49,10 +40,18 @@ export const addPair = formBody => {
       headers: header,
       body: JSON.stringify(formBody)
     }).then(response => {
-      if (response.ok)
-        return response.json()
-      else
-        return Promise.reject(response.json());
+        return handleJsonResponse(response);
+    })
+}
+
+export const deletePair = pairId => {
+  let header = getBasicHeaderWithToken();
+  return fetch(`${baseURL}/me/pair/${pairId}`,
+    {
+      method: methods.delete,
+      headers: header
+    }).then(response => {
+      return handleResponse(response);
     })
 }
 
@@ -68,6 +67,20 @@ export const testConectionWithAPI = () => {
   .catch(function(error) {
     console.log(error)
   });
+}
+
+const handleJsonResponse = (response) =>{
+  if (response.ok)
+    return response.json()
+  else
+    return Promise.reject(response.json());
+}
+
+const handleResponse = (response) =>{
+  if (response.ok)
+    return response;
+  else
+    return Promise.reject(response);
 }
 
 const getBasicHeader = () =>{

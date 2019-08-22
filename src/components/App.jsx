@@ -32,9 +32,16 @@ class App extends Component{
     })
   }
 
-  addPair = (pair) =>{
+  addPairToState = (pair) =>{
     let pairs = this.state.pairs;
     pairs.push(pair);
+    this.setState({pairs:pairs});
+  }
+
+  deletePairInState = (pairId) =>{
+    let pairs = this.state.pairs.filter(pair=>{
+      return pair.id !== pairId;
+    });
     this.setState({pairs:pairs});
   }
 
@@ -45,10 +52,13 @@ class App extends Component{
         <p>{this.state.name}</p>
         <p>{this.state.email}</p>
         <div>{this.state.pairs.map(pair => 
-            <Pair showPairDetails={this.showDetailsOfPair} key={pair.id} pair={pair} />
+            <Pair key={pair.id} 
+                  pair={pair} 
+                  showPairDetails={this.showDetailsOfPair}
+                  deletePairInState={this.deletePairInState} />
           )}
         </div>
-        <AddPair addPair={this.addPair}/>
+        <AddPair addPairToState={this.addPairToState}/>
         <DetailedPair pairDetails={this.state.detailedPair}/>
       </Fragment>
     ) : <div><h1>Access Denied</h1>ESSE BLINK DE TELA VOCE TEM QUE RESOLVER COM O TOKEN SERVICE</div>;
