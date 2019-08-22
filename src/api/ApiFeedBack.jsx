@@ -16,8 +16,7 @@ export const doLogin = loginBody => {
   }
 
 export const getMe = () => {
-  let header = getBasicHeader();
-  header.append("Authorization", sessionStorage.getItem("tokenFeedback"));
+  let header = getBasicHeaderWithToken();
   return fetch(`${baseURL}/me`,
     {
       headers: header
@@ -30,11 +29,25 @@ export const getMe = () => {
 }
 
 export const getPair = pairId => {
-  let header = getBasicHeader();
-  header.append("Authorization", sessionStorage.getItem("tokenFeedback"));
+  let header = getBasicHeaderWithToken();
   return fetch(`${baseURL}/me/pair/${pairId}`,
     {
       headers: header
+    }).then(response => {
+      if (response.ok)
+        return response.json()
+      else
+        return Promise.reject(response.json());
+    })
+}
+
+export const addPair = formBody => {
+  let header = getBasicHeaderWithToken();
+  return fetch(`${baseURL}/me/pair`,
+    {
+      method: methods.post,
+      headers: header,
+      body: JSON.stringify(formBody)
     }).then(response => {
       if (response.ok)
         return response.json()
@@ -61,4 +74,11 @@ const getBasicHeader = () =>{
   return new Headers({'Accept':'application/json', 
     'Content-type':'application/json',
     'Origin':'*'});
+}
+
+const getBasicHeaderWithToken = () =>{
+  return  new Headers({'Accept':'application/json', 
+    'Content-type':'application/json',
+    'Origin':'*',
+    "Authorization" : sessionStorage.getItem("tokenFeedback")});
 }

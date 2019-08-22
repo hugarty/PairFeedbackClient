@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import { getMe, getPair } from '../api/ApiFeedBack';
 import Pair from './Pair';
 import DetailedPair from './DetailedPair';
+import AddPair from './AddPair';
 
 
 class App extends Component{
@@ -31,8 +32,14 @@ class App extends Component{
     })
   }
 
+  addPair = (pair) =>{
+    let pairs = this.state.pairs;
+    pairs.push(pair);
+    this.setState({pairs:pairs});
+  }
+
   render() {
-    return (
+    return this.state.pairs.length > 0 ? (
       <Fragment>
         <h1>Main page</h1>
         <p>{this.state.name}</p>
@@ -41,9 +48,10 @@ class App extends Component{
             <Pair showPairDetails={this.showDetailsOfPair} key={pair.id} pair={pair} />
           )}
         </div>
+        <AddPair addPair={this.addPair}/>
         <DetailedPair pairDetails={this.state.detailedPair}/>
       </Fragment>
-    );
+    ) : <div><h1>Access Denied</h1>ESSE BLINK DE TELA VOCE TEM QUE RESOLVER COM O TOKEN SERVICE</div>;
   }
 }
 
