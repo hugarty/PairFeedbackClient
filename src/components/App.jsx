@@ -1,5 +1,8 @@
 import React, {Component, Fragment} from 'react';
-import { getMe } from '../api/ApiFeedBack';
+import { getMe, getPair } from '../api/ApiFeedBack';
+import Pair from './Pair';
+import DetailedPair from './DetailedPair';
+
 
 class App extends Component{
   constructor(){
@@ -9,6 +12,13 @@ class App extends Component{
       email: '',
       pairs: []
     }
+  }
+
+  showDetailsOfPair = (event, pair) => {
+    getPair(pair.id)
+      .then(res => {
+          this.setState({detailedPair: res});
+      });
   }
 
   componentDidMount(){
@@ -27,8 +37,11 @@ class App extends Component{
         <h1>Main page</h1>
         <p>{this.state.name}</p>
         <p>{this.state.email}</p>
-        <div>{this.state.pairs.map(pair => <p key={pair.id}>
-          <span>Nome: {pair.name} - Average: {pair.average}</span></p>)}</div>
+        <div>{this.state.pairs.map(pair => 
+            <Pair showPairDetails={this.showDetailsOfPair} key={pair.id} pair={pair} />
+          )}
+        </div>
+        <DetailedPair pairDetails={this.state.detailedPair}/>
       </Fragment>
     );
   }

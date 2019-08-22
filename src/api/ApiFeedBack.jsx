@@ -29,6 +29,19 @@ export const getMe = () => {
     })
 }
 
+export const getPair = pairId => {
+  let header = getBasicHeader();
+  header.append("Authorization", sessionStorage.getItem("tokenFeedback"));
+  return fetch(`${baseURL}/me/pair/${pairId}`,
+    {
+      headers: header
+    }).then(response => {
+      if (response.ok)
+        return response.json()
+      else
+        return Promise.reject(response.json());
+    })
+}
 
 export const testConectionWithAPI = () => {
 
