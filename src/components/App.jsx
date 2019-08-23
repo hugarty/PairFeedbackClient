@@ -49,10 +49,16 @@ class App extends Component{
     this.setState({detailedPair: updatedPair});
   }
 
+  doLogout = ()=>{
+    sessionStorage.removeItem('tokenFeedback');
+    this.props.history.push('/login');
+  }
+
   render() {
     return this.state.name.length > 1 ? (
       <Fragment>
         <h1>Main page</h1>
+        <button onClick={this.doLogout}>Logout</button>
         <p>{this.state.name}</p>
         <p>{this.state.email}</p>
         <div>{this.state.pairs.map(pair => 

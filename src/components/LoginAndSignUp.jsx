@@ -14,8 +14,6 @@ class LoginAndSignUp extends Component {
 
   sendData = (event, formBody, senderMethod, nameStateProperty) => {
     event.preventDefault();
-    console.log(nameStateProperty);
-    
     senderMethod(formBody)
       .then(res => this.saveTokenInSessionStorageAndRedirectToMainPage(res))
       .catch(erroPromise => this.getHandledErrorsAndSetState(erroPromise, nameStateProperty));

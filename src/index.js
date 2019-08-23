@@ -8,8 +8,8 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" render={() => sessionStorage.getItem('tokenFeedback') === null ?
-        <Redirect to='/login' /> : <App />} />
+      <Route exact path="/" render={ props => sessionStorage.getItem('tokenFeedback') === null ?
+        <Redirect to='/login' /> : <App history={props.history}/>} />
       <Route path="/login" component={LoginAndSignUp} />
       <Route component={notFound} />
     </Switch>
