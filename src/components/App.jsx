@@ -9,6 +9,7 @@ class App extends Component{
   constructor(){
     super();
     this.state = {
+      showPage: false,
       name: '',
       email: '',
       pairs: []
@@ -18,11 +19,14 @@ class App extends Component{
   componentDidMount(){
     getMe().then(res=>{
       this.setState({
+        showPage: true,
         name: res.name,
         email: res.email,
         pairs: res.pairsDto
       });
-    })
+    }).catch(err => {
+      this.doLogout();
+    });
   }
 
   addPairToState = (pair) =>{
@@ -38,7 +42,7 @@ class App extends Component{
     this.setState({pairs:pairs});
   }
 
-  showDetailsOfPair = (event, pair) => {
+  showPairDetails = (event, pair) => {
     getPair(pair.id)
       .then(res => {
           this.setState({detailedPair: res});
@@ -55,7 +59,7 @@ class App extends Component{
   }
 
   render() {
-    return this.state.name.length > 1 ? (
+    return this.state.showPage ? (
       <Fragment>
         <h1>Main page</h1>
         <button onClick={this.doLogout}>Logout</button>
@@ -64,14 +68,14 @@ class App extends Component{
         <div>{this.state.pairs.map(pair => 
             <Pair key={pair.id} 
                   pair={pair} 
-                  showPairDetails={this.showDetailsOfPair}
+                  showPairDetails={this.showPairDetails}
                   deletePairInState={this.deletePairInState} />
           )}
         </div>
         <AddPair addPairToState={this.addPairToState}/>
         <DetailedPair addFeedbackToState={this.addFeedbackToState}pairDetails={this.state.detailedPair}/>
       </Fragment>
-    ) : <div><h1>Access Denied</h1>ESSE BLINK DE TELA VOCE TEM QUE RESOLVER COM O TOKEN SERVICE</div>;
+    ) : <h1>Carregando</h1> ;
   }
 }
 
