@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import { doLogin } from '../api/ApiFeedBack';
+import { doSignUp } from '../api/ApiFeedBack';
 
-export class FormLogin extends Component {
+export class FormSignUp extends Component {
 
   constructor() {
     super();
-    this.state = { email: '', senha: '', erroMsg: { main: '', email: [], senha: [] } }
+    this.state = { name:'', email: '', senha: '', erroMsg: { main: '', name: [], email: [], senha: [] } }
   }
 
-  sendLoginData = event => {
+  sendSignUpData = event => {
     event.preventDefault();
-    doLogin({ email: this.state.email, senha: this.state.senha })
-      .then(res => {
+    let { name, email, senha } = this.state;
+    doSignUp({name: name, email: email, senha: senha})
+      .then(res =>{
         sessionStorage.setItem('tokenFeedback', `${res.tipo} ${res.token}`)
         this.props.history.push('/');
       })
-      .catch(erroPromise => this.showErrors(erroPromise));
+      .catch(erroPromise => {this.showErrors(erroPromise)});
   }
 
   showErrors = erroPromise => {
@@ -27,7 +28,7 @@ export class FormLogin extends Component {
   }
 
   handleErrorsMsg = serverErrorsMsgs => {
-    let errorsToUpdateState = { main: serverErrorsMsgs.message, email: [], senha: [] }
+    let errorsToUpdateState = { main: serverErrorsMsgs.message, name:[], email: [], senha: [] }
     serverErrorsMsgs.details.forEach(erroMsg => {
       if (erroMsg.includes(':')) {
         let erroArray = erroMsg.split(":");
@@ -44,19 +45,27 @@ export class FormLogin extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.sendLoginData}>
+        <form onSubmit={this.sendSignUpData}>
           <fieldset>
-            <legend>Login</legend>
+            <legend>SignUp</legend>
             <span>{this.state.erroMsg.main}</span>
+            <label htmlFor="name">
+              Name
+                <input type="text" name="name" required 
+                  minLength="3"
+                  value={this.state.name} 
+                  onChange={this.handleChange} />
+              <span>{this.state.erroMsg.name}</span>
+            </label>
             <label htmlFor="email">
-              email
+              Email
                 <input type="email" name="email" required
                   value={this.state.email} 
                   onChange={this.handleChange} />
               <span>{this.state.erroMsg.email}</span>
             </label>
             <label htmlFor="senha">
-              senha
+              Senha
                 <input type="password" name="senha" required 
                   minLength="6"
                   value={this.state.senha} 
@@ -71,4 +80,4 @@ export class FormLogin extends Component {
   }
 }
 
-export default FormLogin;
+export default FormSignUp;

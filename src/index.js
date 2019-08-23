@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import FormLogin from './components/FormLogin';
+import LoginAndSignUp from './components/LoginAndSignUp';
 import { notFound } from './components/NotFound';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ ReactDOM.render(
     <Switch>
       <Route exact path="/" render={() => sessionStorage.getItem('tokenFeedback') === null ?
         <Redirect to='/login' /> : <App />} />
-      <Route path="/login" component={FormLogin} />
+      <Route path="/login" component={LoginAndSignUp} />
       <Route component={notFound} />
     </Switch>
   </BrowserRouter>

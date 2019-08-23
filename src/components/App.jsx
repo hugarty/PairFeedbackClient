@@ -50,7 +50,7 @@ class App extends Component{
   }
 
   render() {
-    return this.state.pairs.length > 0 ? (
+    return this.state.name.length > 1 ? (
       <Fragment>
         <h1>Main page</h1>
         <p>{this.state.name}</p>

@@ -12,6 +12,17 @@ export const doLogin = loginBody => {
     })
   }
 
+export const doSignUp = signUpForm => {
+  return fetch(`${baseURL}/signup`,
+  {
+    method: methods.post,
+    headers: getBasicHeader(),
+    body: JSON.stringify(signUpForm)
+  }).then(response => {
+    return handleJsonResponse(response);
+  })
+}  
+
 export const getMe = () => {
   let header = getBasicHeaderWithToken();
   return fetch(`${baseURL}/me`,
