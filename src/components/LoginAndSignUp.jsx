@@ -50,11 +50,12 @@ class LoginAndSignUp extends Component {
 
   render(){
     return (
-      <div>
-        <FormLogin 
+      <div className="login-signup">
+        <FormLogin
           onSubmitMethod={this.sendData}
           errorsMsg={this.state[this.constValue.loginErrorsMsg]}
           nameStateProperty={this.constValue.loginErrorsMsg}/>
+
         <FormSignUp 
           onSubmitMethod={this.sendData}
           errorsMsg={this.state[this.constValue.signUpErrorsMsg]}

@@ -9,30 +9,24 @@ const FormLogin = ({onSubmitMethod, errorsMsg, nameStateProperty}) => {
     obj ={...obj, feijao: 'valorY'} */
   const handleOnChange = event => setState({...state,[event.target.name]: event.target.value});
   return (
-    <div>
       <form onSubmit={ event => {onSubmitMethod(event, state, doLogin, nameStateProperty)}}>
-        <fieldset>
+        <fieldset className="flex-wrap-start">
           <legend>Login</legend>
           <span>{errorsMsg.main}</span>
-          <label htmlFor="email">
-            email
-              <input type="email" name="email" required
-                value={state.email} 
-                onChange={handleOnChange} />
-            <span>{errorsMsg.email}</span>
-          </label>
-          <label htmlFor="senha">
-            senha
-              <input type="password" name="senha" required 
-                minLength="6"
-                value={state.senha} 
-                onChange={handleOnChange} />
-            <span>{errorsMsg.senha}</span>
-          </label>
-          <input type="submit" value="login" />
+          <label  htmlFor="email">Email</label>
+          <input type="email" name="email" required
+            value={state.email} 
+            onChange={handleOnChange} />
+          <span>{errorsMsg.email}</span>
+          <label htmlFor="senha">Senha</label>
+          <input type="password" name="senha" required 
+            minLength="6"
+            value={state.senha} 
+            onChange={handleOnChange} />
+          <span>{errorsMsg.senha}</span>
+          <button type="submit" value="login">Login</button>
         </fieldset>
       </form>
-    </div>
   );
   
 }

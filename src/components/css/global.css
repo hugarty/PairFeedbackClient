@@ -1,0 +1,56 @@
+.login-signup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: space-evenly;
+  justify-content: space-evenly;
+  min-height: 90vh;
+}
+
+.flex-wrap-start {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+body {
+  background-color: #f0f4f5;
+}
+
+form {
+  color: #343635;
+  padding: 10px;
+}
+
+input {
+  border: transparent;
+  border-bottom: 2px solid #c9cece;
+  margin: 4px;
+}
+
+label {
+  margin: 4px;
+}
+
+button {
+  margin: auto;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #dedede;
+  border: 1px solid #737475;
+  border-radius: 2px;
+  font-weight: bold;
+  width: 50%;
+}
+
+form fieldset legend {
+  text-align: center;
+  font-weight: bolder;
+}
+
+/*# sourceMappingURL=global.css.map */

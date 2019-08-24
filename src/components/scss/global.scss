@@ -1,0 +1,55 @@
+@import './loginAndSignUp.scss';
+
+$darkerColor : #343635;
+$midDarkColor : #737475;
+$midColor : rgb(201, 206, 206);
+$midlightColor : rgb(222, 222, 222);
+$lighterColor : rgb(240, 244, 245);
+$commomMargin: 4px;
+
+.flex-wrap-start{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+body {
+    background-color: $lighterColor;
+}
+
+form {
+    color: $darkerColor;
+    padding: 10px;
+}
+
+input{
+    border: transparent;
+    border-bottom: 2px solid $midColor;
+    margin: $commomMargin;
+}
+
+label {
+    margin: $commomMargin;
+}
+
+button {
+    margin: auto;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: $midlightColor;
+    border: 1px solid $midDarkColor;
+    border-radius: 2px;
+    font-weight: bold;
+    width: 50%;
+}
+
+form fieldset legend {
+    text-align: center;
+    font-weight: bolder;
+}
+
