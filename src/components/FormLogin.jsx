@@ -10,7 +10,7 @@ const FormLogin = ({onSubmitMethod, errorsMsg, nameStateProperty}) => {
   const handleOnChange = event => setState({...state,[event.target.name]: event.target.value});
   return (
       <form onSubmit={ event => {onSubmitMethod(event, state, doLogin, nameStateProperty)}}>
-        <fieldset className="flex-wrap-start">
+        <fieldset className="flex-wrap">
           <legend>Login</legend>
           <span>{errorsMsg.main}</span>
           <label  htmlFor="email">Email</label>

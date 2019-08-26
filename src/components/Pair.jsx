@@ -15,14 +15,12 @@ const Pair = ({ pair, showPairDetails, deletePairInState }) => {
   }
 
   return (
-    <div>
+    <div className="pair">
       <div onClick={returnPairOnClick}>
-        <div>Pairname:{pair.name}</div>
+        <div className="ellipsis-text">Pairname:{pair.name}</div>
         <div>{pair.average}</div>
       </div>
-      <div>
-        <input type="button" value="deletaPair" onClick={onClickDeletePair}/>
-      </div>
+      <input type="button" value="deletaPair" onClick={onClickDeletePair}/>
     </div>
   );
 }

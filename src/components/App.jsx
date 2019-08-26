@@ -3,6 +3,7 @@ import { getMe, getPair } from '../api/ApiFeedBack';
 import Pair from './Pair';
 import DetailedPair from './DetailedPair';
 import AddPair from './AddPair';
+import Loadingsvg from './svg/loadingsvg.jsx'
 
 
 class App extends Component{
@@ -61,21 +62,25 @@ class App extends Component{
   render() {
     return this.state.showPage ? (
       <Fragment>
-        <h1>Main page</h1>
-        <button onClick={this.doLogout}>Logout</button>
-        <p>{this.state.name}</p>
-        <p>{this.state.email}</p>
-        <div>{this.state.pairs.map(pair => 
+        <div className="flex-wrap space-between align-baseline container">
+          <div>
+            <h3>{this.state.name}</h3>
+            <h5>{this.state.email}</h5>
+          </div>
+          <button onClick={this.doLogout}>Logout</button>
+        </div>
+        <AddPair addPairToState={this.addPairToState}/>
+        <div className=" flex-wrap justify-center">
+          {this.state.pairs.map(pair => 
             <Pair key={pair.id} 
                   pair={pair} 
                   showPairDetails={this.showPairDetails}
                   deletePairInState={this.deletePairInState} />
           )}
         </div>
-        <AddPair addPairToState={this.addPairToState}/>
         <DetailedPair addFeedbackToState={this.addFeedbackToState}pairDetails={this.state.detailedPair}/>
       </Fragment>
-    ) : <h1>Carregando</h1> ;
+    ) : <Loadingsvg /> ;
   }
 }
 

@@ -11,7 +11,7 @@ const FormSignUp = ({onSubmitMethod, errorsMsg, nameStateProperty}) => {
 
   return (
       <form onSubmit={ event => {onSubmitMethod(event, state, doSignUp, nameStateProperty)}}>
-        <fieldset className="flex-wrap-start">
+        <fieldset className="flex-wrap">
           <legend>SignUp</legend>
           <span>{errorsMsg.main}</span>
           <label htmlFor="name">Name</label>
