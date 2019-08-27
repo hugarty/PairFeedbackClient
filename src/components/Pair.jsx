@@ -8,19 +8,23 @@ const Pair = ({ pair, showPairDetails, deletePairInState }) => {
   }
 
   const onClickDeletePair = event => {
-    if(window.confirm(`Do you want delete ${pair.name} pair?`)){
-      deletePair(pair.id)
-        .then(deletePairInState(pair.id));
-    }
+    setTimeout(() => {
+      if(window.confirm(`Do you want delete ${pair.name}?`)){
+        deletePair(pair.id)
+          .then(deletePairInState(pair.id));
+      }
+    }, 100);
   }
 
   return (
     <div className="pair">
       <div onClick={returnPairOnClick}>
-        <div className="ellipsis-text">Pairname:{pair.name}</div>
-        <div>{pair.average}</div>
+        <div className="ellipsis-text">
+          <span>{pair.name}</span>
+        </div>
+        <span> Average: {pair.average}</span>
       </div>
-      <input type="button" value="deletaPair" onClick={onClickDeletePair}/>
+      <span type="button" onClick={onClickDeletePair}>&times;</span>
     </div>
   );
 }

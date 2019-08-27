@@ -39,21 +39,23 @@
 }
 
 .ellipsis-text {
+  width: 90%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.pair {
-  border: 1px solid #c9cece;
-  border-radius: 2px;
-  padding: 5px;
-  margin: 5px;
-  width: 60%;
+.text-align-center {
+  text-align: center;
 }
 
-body {
-  background-color: #f0f4f5;
+html {
+  background: #f0f4f5;
+  background: linear-gradient(to bottom, #dedede, #f0f4f5 20%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+  min-height: 101%;
 }
 
 form {
@@ -77,16 +79,21 @@ button {
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #dedede;
+  background-color: #f0f4f5;
   border: none;
   border-radius: 5px;
   font-weight: bold;
-  box-shadow: 1px 1px 0.3em #c9cece;
+  box-shadow: 1px 1px 0.3em #737475;
   margin: 10px;
+}
+button:hover, button:focus {
+  background-color: #dedede;
+  cursor: pointer;
 }
 
 form button {
   margin: auto;
+  margin-top: 20px;
   width: 50%;
 }
 
@@ -99,19 +106,56 @@ form fieldset legend {
   margin-left: 42%;
 }
 
+.pair {
+  background: linear-gradient(to top right, #f0f4f5, #dedede 300%);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border: 1px transparent;
+  border-bottom: 1px solid #c9cece;
+  border-right: 1px solid #c9cece;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #c9cece;
+  margin: 7px;
+  width: 65%;
+}
+.pair:hover, .pair:focus {
+  box-shadow: 1px 1px 6px #737475;
+  cursor: pointer;
+}
+.pair > div {
+  padding: 5px;
+  width: 80%;
+}
+.pair > div:hover, .pair > div:focus {
+  text-shadow: 0px 0px 1px #343635;
+}
+.pair > span {
+  width: 15%;
+  text-align: center;
+  height: 35px;
+  font-size: 1.6em;
+  font-weight: 900;
+  text-shadow: 0px 0px 2px #343635;
+  color: #f0f4f5;
+}
+.pair > span:hover, .pair > span:focus {
+  color: #343635;
+}
+
 /*modal*/
-.modal-add-pair-off {
+.modal-off {
   display: none;
 }
 
-.modal-add-pair-on {
+.modal-on {
   display: block;
   position: fixed;
   z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 150%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.6);
   animation: aparece 0.15s;
@@ -126,39 +170,128 @@ form fieldset legend {
   }
 }
 .modal-content-box {
-  background-color: #f0f4f5;
-  margin: 3% auto;
+  margin: 15% auto;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
   border: 1px solid #c9cece;
   border-radius: 5px;
   width: 80%;
+  background-image: linear-gradient(to right, #f0f4f5, #dedede 160%);
 }
 .modal-content-box form fieldset {
   width: 100%;
 }
-.modal-content-box form fieldset legend {
-  margin: 5px;
+.modal-content-box form fieldset label {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 .modal-content-box form fieldset > input {
   width: 100%;
 }
 .modal-content-box .close {
-  color: #aaa;
+  color: #737475;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
-.modal-content-box .close:hover,
-.modal-content-box .close:focus {
-  color: black;
+.modal-content-box .close:hover, .modal-content-box .close:focus {
+  color: #343635;
   text-decoration: none;
   cursor: pointer;
 }
 
-.rating-input {
-  width: 2ch;
+.modal-details-content-box {
+  margin: 15% auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border: 1px solid #c9cece;
+  border-radius: 5px;
+  width: 85%;
+  max-width: 500px;
+  background-color: #f0f4f5;
+  background-image: linear-gradient(to right, #f0f4f5, #dedede 150%);
+}
+.modal-details-content-box .feedback-scroll-list {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 50px;
+  white-space: nowrap;
+  overflow-x: auto;
+  background-color: white;
+  border-radius: 5px;
+  border-bottom: 2px solid #c9cece;
+  border-right: 2px solid #c9cece;
+}
+.modal-details-content-box .feedback-scroll-list .item-scrool-list {
+  margin: 2px;
+  margin-left: 5px;
+  font-size: 14pt;
+  border-radius: 5px;
+  color: #737475;
+  background-image: linear-gradient(to bottom, #dedede, #c9cece 150%);
+}
+.modal-details-content-box .feedback-scroll-list .item-scrool-list:hover, .modal-details-content-box .feedback-scroll-list .item-scrool-list:focus {
+  background-image: linear-gradient(to top, #737475, #343635 150%);
+  color: #f0f4f5;
+}
+.modal-details-content-box .details-feedback {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.modal-details-content-box .form-new-feedback form fieldset {
+  display: flex;
+}
+.modal-details-content-box .form-new-feedback form fieldset > input {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.modal-details-content-box .form-new-feedback form fieldset button {
+  max-width: 150px;
+  margin-top: 10px;
+}
+.modal-details-content-box .rating-input {
+  width: 4ch;
+}
+.modal-details-content-box .close {
+  color: #737475;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.modal-details-content-box .close:hover, .modal-details-content-box .close:focus {
+  color: #343635;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+  border-radius: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 3px;
+  background: #f0f4f5;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #737475;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #343635;
 }
 
 @media (min-width: 400px) {

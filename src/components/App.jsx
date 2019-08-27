@@ -46,12 +46,20 @@ class App extends Component{
   showPairDetails = (event, pair) => {
     getPair(pair.id)
       .then(res => {
-          this.setState({detailedPair: res});
+          this.setState({detailedPair: {...res}});
       });
+  }
+  closePairDetailsModal = () =>{
+    this.setState({detailedPair: false});
   }
 
   addFeedbackToState = updatedPair =>{
-    this.setState({detailedPair: updatedPair});
+    let updatedPairsArray = this.state.pairs.map(item => {
+      if(item.id === updatedPair.id)
+        item.average = updatedPair.average;
+      return item;
+    });
+    this.setState({pairs: updatedPairsArray, detailedPair: updatedPair});
   }
 
   doLogout = ()=>{
@@ -78,7 +86,10 @@ class App extends Component{
                   deletePairInState={this.deletePairInState} />
           )}
         </div>
-        <DetailedPair addFeedbackToState={this.addFeedbackToState}pairDetails={this.state.detailedPair}/>
+        <DetailedPair 
+          addFeedbackToState={this.addFeedbackToState}
+          pairDetails={this.state.detailedPair}
+          closePairDetailsModal={this.closePairDetailsModal}/>
       </Fragment>
     ) : <Loadingsvg /> ;
   }

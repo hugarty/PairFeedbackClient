@@ -9,8 +9,7 @@ export class AddFeedback extends Component {
 
   sendForm = event => {
     event.preventDefault();
-    let formBody = this.state;
-    formBody.pairId = this.props.pairId;
+    let formBody = {...this.state, pairId: this.props.pairId};
     addFeedbackInPair(formBody).then(res => {
       this.props.addFeedbackToState(res);
     });
@@ -22,19 +21,20 @@ export class AddFeedback extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form-new-feedback">
         <form onSubmit={this.sendForm}>
           <fieldset>
           <legend>Add new Feedback</legend>
-            <label htmlFor="message">
-              Message
-                <input type="text" name="message" value={this.state.message} onChange={this.handleChange} required />
-            </label>
+            <label htmlFor="message">Message</label>
+            <input autoComplete="off" type="text" name="message" value={this.state.message} onChange={this.handleChange} />
             <label htmlFor="rating">
               Rating
-                <input type="number" name="rating" min="0" max="10" value={this.state.rating} onChange={this.handleChange} required />
+                <input name="rating" type="number" min="0" max="10" className="rating-input"
+                  value={this.state.rating} 
+                  onChange={this.handleChange} 
+                  required/>
             </label>
-            <input type="submit" value="Enviar" />
+            <button type="submit" value="">Add Feedback</button>
           </fieldset>
         </form>
       </div>

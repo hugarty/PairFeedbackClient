@@ -11,7 +11,7 @@ class AddPair extends Component {
   sendForm = event => {
     event.preventDefault();
     addPair(this.state).then(res => {
-      this.setState({ modalStatus: false })
+      this.setState({name: '', rating: '', message: '', modalStatus: false  })
       this.props.addPairToState(res);
     });
   }
@@ -31,14 +31,13 @@ class AddPair extends Component {
   }
 
   getModelClassBasedOnModelStatus = boolean => {
-    return boolean ? 'modal-add-pair-on' : 'modal-add-pair-off';
+    return boolean ? 'modal-on' : 'modal-off';
   }
 
   render() {
     return (
       <div className="addPair">
-        <button onClick={this.showModal}>New Pair &#10010;</button>
-
+        <button onClick={this.showModal}> &#10010; New Pair</button>
         <div id="modalAddPairBackground" className={this.getModelClassBasedOnModelStatus(this.state.modalStatus)} onClick={this.closeModal}>
           <div className="modal-content-box">
             <span id="modalCloseButton" className="close" onClick={this.closeModal}>&times;</span>
@@ -46,12 +45,12 @@ class AddPair extends Component {
               <fieldset className="flex-wrap">
                 <legend>Add Pair</legend>
                 <label htmlFor="name">Name</label>
-                <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required />
+                <input autoComplete="off" type="text" name="name" value={this.state.name} onChange={this.handleChange} required />
               </fieldset>
               <fieldset className="flex-wrap">
                 <legend>First Feedback</legend>
                 <label htmlFor="message">Message</label>
-                <input type="text" name="message" value={this.state.message} onChange={this.handleChange} required />
+                <input autoComplete="off" type="text" name="message" value={this.state.message} onChange={this.handleChange}/>
                 <label htmlFor="rating">
                   Rating:
                   <input className="rating-input" type="number" name="rating" min="0" max="10" value={this.state.rating} onChange={this.handleChange} required />
