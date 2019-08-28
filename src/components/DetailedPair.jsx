@@ -3,17 +3,29 @@ import AddFeedback from './AddFeedback';
 import FeedbackScrollItem from './FeedbackScrollItem';
 
 const DetailedPair = ({ pairDetails, addFeedbackToState, closePairDetailsModal}) => {
-  const [detailsFeedback, setDetailsFeedback] = useState({date:'Date',message:'Message'});
+  const [detailsFeedback, setDetailsFeedback] = useState({id:'',date:'Date',message:'Message'});
 
   const closeModal = event => {
     if(event.target.id === "closeButton" || event.target.id === "backgroundModal"){
-      setDetailsFeedback({date:'Date',message:'Message'});
+      resetDetailsFeedback();
       closePairDetailsModal();
     }
   }
 
+  const resetDetailsAndAddFeedbackToState = pairUpdated => {
+    let lastIdAddedInFeedbackList = Math.max( ...pairUpdated.feedBackDtoList.map(item => item.id));
+    if(detailsFeedback.id === lastIdAddedInFeedbackList){
+      resetDetailsFeedback();
+    }
+    addFeedbackToState(pairUpdated);
+  }
+
   const changeDetailsFeedback = dateAndMessage => {
     setDetailsFeedback(dateAndMessage);
+  }
+
+  const resetDetailsFeedback = () => {
+    setDetailsFeedback({id:'',date:'Date',message:'Message'});
   }
 
   if (pairDetails) {
@@ -38,7 +50,7 @@ const DetailedPair = ({ pairDetails, addFeedbackToState, closePairDetailsModal})
                 )
             })}
           </div>
-          <AddFeedback addFeedbackToState={addFeedbackToState} pairId={id} />
+          <AddFeedback resetDetailsAndAddFeedbackToState={resetDetailsAndAddFeedbackToState} pairId={id} />
         </div>
       </div>
     );

@@ -6,7 +6,7 @@ const FeedbackScrollItem = ({ feedBackDto, changeDetailsFeedback }) => {
     const date = new Date(...feedBackDto.date.split('-'));
     const localeDate = date.toLocaleString('pt-BR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     const message = feedBackDto.message.length > 0 ? feedBackDto.message : '...';
-    let dateAndMessage = { date: localeDate, message: message};
+    let dateAndMessage = {id: feedBackDto.id , date: localeDate, message: message};
     changeDetailsFeedback(dateAndMessage);
   }
 

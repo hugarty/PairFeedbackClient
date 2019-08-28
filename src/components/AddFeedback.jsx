@@ -10,8 +10,8 @@ export class AddFeedback extends Component {
   sendForm = event => {
     event.preventDefault();
     let formBody = {...this.state, pairId: this.props.pairId};
-    addFeedbackInPair(formBody).then(res => {
-      this.props.addFeedbackToState(res);
+    addFeedbackInPair(formBody).then(pairUpdated => {
+      this.props.resetDetailsAndAddFeedbackToState(pairUpdated);
     });
   }
 
