@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { doLogin } from '../api/ApiFeedBack';
 
 const FormLogin = ({onSubmitMethod, errorsMsg, nameStateProperty}) => {
-  const [state, setState] = useState({email:'', senha:''});
+  const [state, setState] = useState({email:'', passwd:''});
   
   /* Apenas definiu um valor diferente em uma propriedade
     let obj = {arroz:'', feijao:'x'}
@@ -18,12 +18,12 @@ const FormLogin = ({onSubmitMethod, errorsMsg, nameStateProperty}) => {
             value={state.email} 
             onChange={handleOnChange} />
           <span>{errorsMsg.email}</span>
-          <label htmlFor="senha">Senha</label>
-          <input type="password" name="senha" required 
+          <label htmlFor="passwd">Password</label>
+          <input type="password" name="passwd" required 
             minLength="6"
-            value={state.senha} 
+            value={state.passwd} 
             onChange={handleOnChange} />
-          <span>{errorsMsg.senha}</span>
+          <span>{errorsMsg.passwd}</span>
           <button type="submit" value="login">Login</button>
         </fieldset>
       </form>
