@@ -1,5 +1,6 @@
 import React from 'react';
 import { deletePair } from '../api/ApiFeedBack';
+import { formatFloat } from '../utils/Utils';
 
 const Pair = ({ pair, showPairDetails, deletePairInState }) => {
 
@@ -22,7 +23,7 @@ const Pair = ({ pair, showPairDetails, deletePairInState }) => {
         <div className="ellipsis-text">
           <span>{pair.name}</span>
         </div>
-        <span> Average: {pair.average}</span>
+        <span> Average: {formatFloat(pair.average)}</span>
       </div>
       <span type="button" onClick={onClickDeletePair}>&times;</span>
     </div>
