@@ -26,7 +26,7 @@ export class AddFeedback extends Component {
           <fieldset>
           <legend>Add new Feedback</legend>
             <label htmlFor="message">Message</label>
-            <input autoComplete="off" type="text" name="message" value={this.state.message} onChange={this.handleChange} />
+            <input autoComplete="off" type="text" name="message" value={this.state.message} onChange={this.handleChange}  placeholder="This is optional"/>
             <label htmlFor="rating">
               Rating
                 <input name="rating" type="number" min="0" max="10" className="rating-input"

@@ -50,7 +50,7 @@ class AddPair extends Component {
               <fieldset className="flex-wrap">
                 <legend>First Feedback</legend>
                 <label htmlFor="message">Message</label>
-                <input autoComplete="off" type="text" name="message" value={this.state.message} onChange={this.handleChange}/>
+                <input autoComplete="off" type="text" name="message" value={this.state.message} onChange={this.handleChange} placeholder="This is optional"/>
                 <label htmlFor="rating">
                   Rating:
                   <input className="rating-input" type="number" name="rating" min="0" max="10" value={this.state.rating} onChange={this.handleChange} required />
