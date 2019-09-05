@@ -95,15 +95,23 @@ export const testConectionWithAPI = () => {
 const handleJsonResponse = (response) =>{
   if (response.ok)
     return response.json()
-  else
-    return Promise.reject(response.json());
+  removeTokenFromStorageIf403(response)
+  return Promise.reject(response.json());
 }
 
 const handleResponse = (response) =>{
   if (response.ok)
     return response;
-  else
-    return Promise.reject(response);
+  removeTokenFromStorageIf403(response)
+  return Promise.reject(response);
+}
+
+const removeTokenFromStorageIf403 = response => {
+  if(response.status === 403){
+    alert("Your token has expired, you will be redirected.\nSorry")
+    sessionStorage.removeItem('tokenFeedback');
+    window.location.reload();
+  }
 }
 
 const getBasicHeader = () =>{
