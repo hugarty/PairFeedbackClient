@@ -49,9 +49,12 @@ $commomMargin: 4px;
   text-align: center;
 }
 
+.html-background-0 {
+  background: linear-gradient(to bottom, $midLightColor, $lighterColor 20%);
+}
+
 html {
   background: $lighterColor;
-  background: linear-gradient(to bottom, $midLightColor, $lighterColor 20%);
   background-repeat: no-repeat;
   background-size: cover;
   height: auto;
@@ -114,8 +117,11 @@ form fieldset legend {
   }
 }
 
-.pair{
+.pair-background-0 {
   background: linear-gradient(to top right, $lighterColor, $midLightColor 300%);
+}
+
+.pair{
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -193,6 +199,10 @@ form fieldset legend {
   }
 }
 
+.modal-background-0 {
+  background-image: linear-gradient(to right, $lighterColor, $midLightColor 160%);
+}
+
 .modal-content-box {
   margin: 15% auto;
   padding-left: 20px;
@@ -201,7 +211,6 @@ form fieldset legend {
   border: 1px solid $midColor;
   border-radius: 5px;
   width: 80%;
-  background-image: linear-gradient(to right, $lighterColor, $midLightColor 160%);
 
   form fieldset{
     width: 100%;
@@ -230,6 +239,21 @@ form fieldset legend {
   }
 }
 
+.modal-details-background-0{
+  background-image: linear-gradient(to right, $lighterColor, $midLightColor 150%);
+}
+
+.item-scroll-background-0 {
+  background-image: linear-gradient(to bottom, $midLightColor, $midColor 150%);
+  color: $midDarkColor;
+  
+  &:hover,
+  &:focus {
+    background-image: linear-gradient(to top, $midDarkColor, $darkerColor 150%);
+    color: $lighterColor;
+  }
+}
+
 .modal-details-content-box {
   margin: 15% auto;
   padding-left: 20px;
@@ -241,7 +265,6 @@ form fieldset legend {
   width: 85%;
   max-width: 500px;
   background-color: $lighterColor;
-  background-image: linear-gradient(to right, $lighterColor, $midLightColor 150%);
   
   .feedback-scroll-list {
     display: flex;
@@ -260,15 +283,6 @@ form fieldset legend {
       margin-left: 5px;
       font-size: 14pt;
       border-radius: 5px;
-      color: $midDarkColor;
-      
-      background-image: linear-gradient(to bottom, $midLightColor, $midColor 150%);
-
-      &:hover,
-      &:focus {
-        background-image: linear-gradient(to top, $midDarkColor, $darkerColor 150%);
-        color: $lighterColor;
-      }
     }
   }
 

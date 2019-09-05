@@ -49,9 +49,12 @@
   text-align: center;
 }
 
+.html-background-0 {
+  background: linear-gradient(to bottom, #dedede, #f0f4f5 20%);
+}
+
 html {
   background: #f0f4f5;
-  background: linear-gradient(to bottom, #dedede, #f0f4f5 20%);
   background-repeat: no-repeat;
   background-size: cover;
   height: auto;
@@ -106,8 +109,11 @@ form fieldset legend {
   margin-left: 42%;
 }
 
-.pair {
+.pair-background-0 {
   background: linear-gradient(to top right, #f0f4f5, #dedede 300%);
+}
+
+.pair {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -169,6 +175,10 @@ form fieldset legend {
     opacity: 1;
   }
 }
+.modal-background-0 {
+  background-image: linear-gradient(to right, #f0f4f5, #dedede 160%);
+}
+
 .modal-content-box {
   margin: 15% auto;
   padding-left: 20px;
@@ -177,7 +187,6 @@ form fieldset legend {
   border: 1px solid #c9cece;
   border-radius: 5px;
   width: 80%;
-  background-image: linear-gradient(to right, #f0f4f5, #dedede 160%);
 }
 .modal-content-box form fieldset {
   width: 100%;
@@ -201,6 +210,19 @@ form fieldset legend {
   cursor: pointer;
 }
 
+.modal-details-background-0 {
+  background-image: linear-gradient(to right, #f0f4f5, #dedede 150%);
+}
+
+.item-scroll-background-0 {
+  background-image: linear-gradient(to bottom, #dedede, #c9cece 150%);
+  color: #737475;
+}
+.item-scroll-background-0:hover, .item-scroll-background-0:focus {
+  background-image: linear-gradient(to top, #737475, #343635 150%);
+  color: #f0f4f5;
+}
+
 .modal-details-content-box {
   margin: 15% auto;
   padding-left: 20px;
@@ -212,7 +234,6 @@ form fieldset legend {
   width: 85%;
   max-width: 500px;
   background-color: #f0f4f5;
-  background-image: linear-gradient(to right, #f0f4f5, #dedede 150%);
 }
 .modal-details-content-box .feedback-scroll-list {
   display: flex;
@@ -231,12 +252,6 @@ form fieldset legend {
   margin-left: 5px;
   font-size: 14pt;
   border-radius: 5px;
-  color: #737475;
-  background-image: linear-gradient(to bottom, #dedede, #c9cece 150%);
-}
-.modal-details-content-box .feedback-scroll-list .item-scrool-list:hover, .modal-details-content-box .feedback-scroll-list .item-scrool-list:focus {
-  background-image: linear-gradient(to top, #737475, #343635 150%);
-  color: #f0f4f5;
 }
 .modal-details-content-box .details-feedback {
   display: flex;

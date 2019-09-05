@@ -11,7 +11,7 @@ const FeedbackScrollItem = ({ feedBackDto, changeDetailsFeedback }) => {
   }
 
   return (
-    <button className="item-scrool-list" onClick={onClickHandler}>
+    <button className="item-scrool-list item-scroll-background-0" onClick={onClickHandler}>
       {feedBackDto.rating}
     </button>
   );

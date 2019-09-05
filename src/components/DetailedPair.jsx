@@ -33,7 +33,7 @@ const DetailedPair = ({ pairDetails, addFeedbackToState, closePairDetailsModal})
     let { id, name, average, feedBackDtoList} = pairDetails;
     return (
       <div id="backgroundModal" onClick={closeModal} className="modal-on">
-        <div className="modal-details-content-box">
+        <div className="modal-details-content-box modal-details-background-0">
           <span id="closeButton" onClick={closeModal} className="close">&times;</span>
           <h4 className="ellipsis-text">{name}</h4>
           <h5>Average: {formatFloat(average)}</h5>

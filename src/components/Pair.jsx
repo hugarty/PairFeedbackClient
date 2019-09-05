@@ -18,7 +18,7 @@ const Pair = ({ pair, showPairDetails, deletePairInState }) => {
   }
 
   return (
-    <div className="pair">
+    <div className="pair pair-background-0">
       <div onClick={returnPairOnClick}>
         <div className="ellipsis-text">
           <span>{pair.name}</span>

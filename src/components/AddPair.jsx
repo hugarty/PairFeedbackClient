@@ -39,7 +39,7 @@ class AddPair extends Component {
       <div className="addPair">
         <button onClick={this.showModal}> &#10010; New Pair</button>
         <div id="modalAddPairBackground" className={this.getModelClassBasedOnModelStatus(this.state.modalStatus)} onClick={this.closeModal}>
-          <div className="modal-content-box">
+          <div className="modal-content-box modal-background-0">
             <span id="modalCloseButton" className="close" onClick={this.closeModal}>&times;</span>
             <form onSubmit={this.sendForm}>
               <fieldset className="flex-wrap">
