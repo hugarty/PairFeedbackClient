@@ -52,6 +52,52 @@ $commomMargin: 4px;
 .html-background-0 {
   background: linear-gradient(to bottom, $midLightColor, $lighterColor 20%);
 }
+.pair-background-0 {
+  background: linear-gradient(to top right, $lighterColor, $midLightColor 300%);
+}
+.modal-background-0 {
+  background-image: linear-gradient(to right, $lighterColor, $midLightColor 160%);
+}
+.modal-details-background-0{
+  background-image: linear-gradient(to right, $lighterColor, $midLightColor 150%);
+}
+
+.item-scroll-background-0 {
+  background-image: linear-gradient(to bottom, $midLightColor, $midColor 150%);
+  color: $midDarkColor;
+  
+  &:hover,
+  &:focus {
+    background-image: linear-gradient(to top, $midDarkColor, $darkerColor 150%);
+    color: $lighterColor;
+  }
+}
+
+.html-background-1 {
+  background: linear-gradient(to bottom, $midLightColor, $lighterColor 20%);
+}
+.pair-background-1 {
+  background: linear-gradient(to top right, $lighterColor, $midLightColor 300%);
+}
+.modal-background-1 {
+  background-image: linear-gradient(to right, $lighterColor, $midLightColor 160%);
+}
+.modal-details-background-1{
+  background-image: linear-gradient(to right, $lighterColor, $midLightColor 150%);
+}
+
+.item-scroll-background-1 {
+  background-image: linear-gradient(to bottom, $midLightColor, $midColor 150%);
+  color: $midDarkColor;
+  
+  &:hover,
+  &:focus {
+    background-image: linear-gradient(to top, $midDarkColor, $darkerColor 150%);
+    color: $lighterColor;
+  }
+}
+
+
 
 html {
   background: $lighterColor;
@@ -117,9 +163,6 @@ form fieldset legend {
   }
 }
 
-.pair-background-0 {
-  background: linear-gradient(to top right, $lighterColor, $midLightColor 300%);
-}
 
 .pair{
   display: flex;
@@ -199,10 +242,6 @@ form fieldset legend {
   }
 }
 
-.modal-background-0 {
-  background-image: linear-gradient(to right, $lighterColor, $midLightColor 160%);
-}
-
 .modal-content-box {
   margin: 15% auto;
   padding-left: 20px;
@@ -236,21 +275,6 @@ form fieldset legend {
       text-decoration: none;
       cursor: pointer;
     }
-  }
-}
-
-.modal-details-background-0{
-  background-image: linear-gradient(to right, $lighterColor, $midLightColor 150%);
-}
-
-.item-scroll-background-0 {
-  background-image: linear-gradient(to bottom, $midLightColor, $midColor 150%);
-  color: $midDarkColor;
-  
-  &:hover,
-  &:focus {
-    background-image: linear-gradient(to top, $midDarkColor, $darkerColor 150%);
-    color: $lighterColor;
   }
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { deletePair } from '../api/ApiFeedBack';
-import { formatFloat } from '../utils/Utils';
+import { formatFloat, currentPallete } from '../utils/Utils';
 
 const Pair = ({ pair, showPairDetails, deletePairInState }) => {
 
@@ -18,7 +18,7 @@ const Pair = ({ pair, showPairDetails, deletePairInState }) => {
   }
 
   return (
-    <div className="pair pair-background-0">
+    <div className={currentPallete("pair pair-background-")}>
       <div onClick={returnPairOnClick}>
         <div className="ellipsis-text">
           <span>{pair.name}</span>

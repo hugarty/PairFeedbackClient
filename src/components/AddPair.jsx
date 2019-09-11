@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { addPair } from '../api/ApiFeedBack';
+import { currentPallete } from '../utils/Utils'
 
 
 class AddPair extends Component {
@@ -39,7 +40,7 @@ class AddPair extends Component {
       <div className="addPair">
         <button onClick={this.showModal}> &#10010; New Pair</button>
         <div id="modalAddPairBackground" className={this.getModelClassBasedOnModelStatus(this.state.modalStatus)} onClick={this.closeModal}>
-          <div className="modal-content-box modal-background-0">
+          <div className={currentPallete("modal-content-box modal-background-")}>
             <span id="modalCloseButton" className="close" onClick={this.closeModal}>&times;</span>
             <form onSubmit={this.sendForm}>
               <fieldset className="flex-wrap">

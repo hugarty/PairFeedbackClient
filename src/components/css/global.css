@@ -53,6 +53,52 @@
   background: linear-gradient(to bottom, #dedede, #f0f4f5 20%);
 }
 
+.pair-background-0 {
+  background: linear-gradient(to top right, #f0f4f5, #dedede 300%);
+}
+
+.modal-background-0 {
+  background-image: linear-gradient(to right, #f0f4f5, #dedede 160%);
+}
+
+.modal-details-background-0 {
+  background-image: linear-gradient(to right, #f0f4f5, #dedede 150%);
+}
+
+.item-scroll-background-0 {
+  background-image: linear-gradient(to bottom, #dedede, #c9cece 150%);
+  color: #737475;
+}
+.item-scroll-background-0:hover, .item-scroll-background-0:focus {
+  background-image: linear-gradient(to top, #737475, #343635 150%);
+  color: #f0f4f5;
+}
+
+.html-background-1 {
+  background: linear-gradient(to bottom, #dedede, #f0f4f5 20%);
+}
+
+.pair-background-1 {
+  background: linear-gradient(to top right, #f0f4f5, #dedede 300%);
+}
+
+.modal-background-1 {
+  background-image: linear-gradient(to right, #f0f4f5, #dedede 160%);
+}
+
+.modal-details-background-1 {
+  background-image: linear-gradient(to right, #f0f4f5, #dedede 150%);
+}
+
+.item-scroll-background-1 {
+  background-image: linear-gradient(to bottom, #dedede, #c9cece 150%);
+  color: #737475;
+}
+.item-scroll-background-1:hover, .item-scroll-background-1:focus {
+  background-image: linear-gradient(to top, #737475, #343635 150%);
+  color: #f0f4f5;
+}
+
 html {
   background: #f0f4f5;
   background-repeat: no-repeat;
@@ -107,10 +153,6 @@ form fieldset legend {
 
 .loading-svg {
   margin-left: 42%;
-}
-
-.pair-background-0 {
-  background: linear-gradient(to top right, #f0f4f5, #dedede 300%);
 }
 
 .pair {
@@ -175,10 +217,6 @@ form fieldset legend {
     opacity: 1;
   }
 }
-.modal-background-0 {
-  background-image: linear-gradient(to right, #f0f4f5, #dedede 160%);
-}
-
 .modal-content-box {
   margin: 15% auto;
   padding-left: 20px;
@@ -208,19 +246,6 @@ form fieldset legend {
   color: #343635;
   text-decoration: none;
   cursor: pointer;
-}
-
-.modal-details-background-0 {
-  background-image: linear-gradient(to right, #f0f4f5, #dedede 150%);
-}
-
-.item-scroll-background-0 {
-  background-image: linear-gradient(to bottom, #dedede, #c9cece 150%);
-  color: #737475;
-}
-.item-scroll-background-0:hover, .item-scroll-background-0:focus {
-  background-image: linear-gradient(to top, #737475, #343635 150%);
-  color: #f0f4f5;
 }
 
 .modal-details-content-box {
