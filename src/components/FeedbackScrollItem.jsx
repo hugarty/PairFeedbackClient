@@ -1,5 +1,4 @@
 import React from 'react';
-import { currentPallete } from '../utils/Utils';
 
 const FeedbackScrollItem = ({ feedBackDto, changeDetailsFeedback }) => {
 
@@ -12,7 +11,7 @@ const FeedbackScrollItem = ({ feedBackDto, changeDetailsFeedback }) => {
   }
 
   return (
-    <button className={currentPallete("item-scrool-list item-scroll-background-")} onClick={onClickHandler}>
+    <button className="item-scrool-list item-scroll-background-0" onClick={onClickHandler}>
       {feedBackDto.rating}
     </button>
   );

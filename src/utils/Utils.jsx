@@ -3,7 +3,3 @@
 export const formatFloat = (floatValue) => {
     return Number.parseFloat(floatValue).toFixed(DIGITS_AFTER_DOT);
 }
-
-export const currentPallete = (classPrefix) => {
-    return classPrefix + localStorage.getItem("pallete")
-}
