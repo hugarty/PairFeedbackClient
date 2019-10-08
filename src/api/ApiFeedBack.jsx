@@ -1,4 +1,4 @@
-const baseURL = "http://192.168.15.12:8080"
+const baseURL = "https://agile-fjord-02510.herokuapp.com"
 const methods = {get:'GET', post:'POST', delete: 'DELETE', patch: 'PATCH'};
 
 export const doLogin = loginBody => {
